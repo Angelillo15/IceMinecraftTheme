@@ -22,7 +22,7 @@ installTheme(){
     rm /var/www/pterodactyl/resources/scripts/index.tsx
     rm /var/www/pterodactyl/resources/scripts/components/server/console/Console.tsx
     mv index.tsx /var/www/pterodactyl/resources/scripts/index.tsx
-    mv IceMinecraftTheme.css /var/www/pterodactyl/resources/scripts/IceMinecraftTheme.css
+    mv resources/scripts/IceMinecraftTheme.css /var/www/pterodactyl/resources/scripts/IceMinecraftTheme.css
     mv components/server/console/Console.tsx /var/www/pterodactyl/resources/scripts/components/server/console/Console.tsx
     cd /var/www/pterodactyl
 
