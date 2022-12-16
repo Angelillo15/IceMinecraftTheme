@@ -17,7 +17,7 @@ installTheme(){
     cd /var/www/pterodactyl
     rm -r IceMinecraftTheme
     git clone https://github.com/Angelillo15/IceMinecraftTheme.git
-    cd MinecraftPurpleTheme
+    cd IceMinecraftTheme
     rm /var/www/pterodactyl/resources/scripts/IceMinecraftTheme.css
     rm /var/www/pterodactyl/resources/scripts/index.tsx
     rm /var/www/pterodactyl/resources/scripts/components/server/console/Console.tsx
@@ -89,7 +89,8 @@ echo ""
 echo "[1] Install theme"
 echo "[2] Restore backup"
 echo "[3] Repair panel (use if you have an error in the theme installation)"
-echo "[4] Exit"
+echo "[4] Update the panel"
+echo "[5] Exit"
 printf "${NO_COLOR}"
 
 read -p "Please enter a number: " choice
@@ -106,6 +107,10 @@ if [ $choice == "3" ]
     repair
 fi
 if [ $choice == "4" ]
+    then
+    repair
+fi
+if [ $choice == "5" ]
     then
     exit
 fi

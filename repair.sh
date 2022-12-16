@@ -46,7 +46,7 @@ repairPanel(){
 }
 
 while true; do
-    read -p "Are you sure that you want to repair the panel [y/N]? " yn
+    read -p "Are you sure [y/N]? " yn
     case $yn in
         [Yy]* ) repairPanel; break;;
         [Nn]* ) exit;;
