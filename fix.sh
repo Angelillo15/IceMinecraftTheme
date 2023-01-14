@@ -6,6 +6,7 @@ fi
 fix() {
     echo "Fixing theme..."
     cd /var/www/pterodactyl
+    npx browserslist@latest --update-db
     npx update-browserslist-db@latest
     echo "Please wait until the process is finished..."
     yarn build:production
