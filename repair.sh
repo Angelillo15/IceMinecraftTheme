@@ -1,5 +1,3 @@
-#!/bin/bash
-
 if (( $EUID != 0 )); then
     echo "Please run as root"
     exit
@@ -28,28 +26,14 @@ repairPanel(){
 
     php artisan queue:restart
 
-    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-
-    apt update
-
-    apt install -y nodejs
-
-    npm i -g yarn
-
-    yarn
-
-    yarn build:production
-
-    sudo php artisan optimize:clear
-
     php artisan up
 }
 
 while true; do
-    read -p "Are you sure [y/N]? " yn
+    read -p "Are you sure that you want to install the theme [y/n]? " yn
     case $yn in
         [Yy]* ) repairPanel; break;;
         [Nn]* ) exit;;
-        * ) exit;;
+        * ) echo "Please answer yes or no.";;
     esac
 done
