@@ -26,7 +26,7 @@ installTheme(){
     mv resources/scripts/components/server/console/Console.tsx /var/www/pterodactyl/resources/scripts/components/server/console/Console.tsx
     cd /var/www/pterodactyl
 
-    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
     apt update
     apt install -y nodejs
 
