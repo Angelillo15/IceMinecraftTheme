@@ -32,7 +32,7 @@ installTheme(){
 
     npm i -g yarn
     yarn
-
+    export NODE_OPTIONS=--openssl-legacy-provider
     cd /var/www/pterodactyl
     yarn build:production
     sudo php artisan optimize:clear
