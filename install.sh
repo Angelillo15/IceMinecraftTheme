@@ -26,9 +26,11 @@ installTheme(){
     mv resources/scripts/components/server/console/Console.tsx /var/www/pterodactyl/resources/scripts/components/server/console/Console.tsx
     cd /var/www/pterodactyl
 
-    curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     apt update
-    apt install -y nodejs
+    nmv install node
 
     npm i -g yarn
     yarn
