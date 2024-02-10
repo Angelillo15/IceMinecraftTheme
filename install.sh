@@ -27,21 +27,26 @@ installTheme(){
     cd /var/www/pterodactyl
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | sudo -E bash -
-    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    apt update
-    nmv install node
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    nvm install node || {
+        echo "nvm command not found, trying to source nvm script directly..."
+        . ~/.nvm/nvm.sh
+        nvm install node
+    }
     apt update
     apt install -y nodejs
 
     npm i -g yarn
     yarn
     export NODE_OPTIONS=--openssl-legacy-provider
-    cd /var/www/pterodactyl
-    yarn build:production
+    yarn build:production || {
+        echo "node: --openssl-legacy-provider is not allowed in NODE_OPTIONS"
+        export NODE_OPTIONS=
+        yarn build:production
+    }
     sudo php artisan optimize:clear
-
-
 }
 
 installThemeQuestion(){
