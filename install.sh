@@ -36,7 +36,6 @@ installTheme(){
         nvm install node
     }
     apt update
-    apt install -y nodejs
 
     npm i -g yarn
     yarn
